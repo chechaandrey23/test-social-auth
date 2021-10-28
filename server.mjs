@@ -7,6 +7,7 @@ import path from 'path';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import crypto from 'crypto';
+import {Strategy as GitHubStrategy} from 'passport-github';
 
 const app = express();
 const port = process.env.PORT || 3003;
@@ -73,6 +74,22 @@ passport.use(new GoogleStrategy({
 	}
 ));
 
+// github
+passport.use(new GitHubStrategy({
+		clientID: 'fa3f7124fe705f856d73',
+		clientSecret: '8f327ca7f4193b02906d881a35400cba232a8dc1',
+		//callbackURL: "http://127.0.0.1:3003/auth/github/callback"
+		callbackURL: "https://blooming-wave-53194.herokuapp.com/auth/github/callback"
+	},
+	function(accessToken, refreshToken, profile, cb) {
+		console.log(accessToken, refreshToken, profile);
+		cb(null, profile);
+		//User.findOrCreate({ githubId: profile.id }, function (err, user) {
+		//	return cb(err, user);
+		//});
+	}
+));
+
 // end passport
 app.use(passport.initialize());
 app.use(passport.session());
@@ -119,6 +136,14 @@ app.get('/auth/google/callback',
 		res.redirect('/user');
 	}
 );
+
+app.get('/auth/github', middlewareYesAuthRedirect, passport.authenticate('github'));
+
+app.get('/auth/github/callback', 
+	passport.authenticate('github', { failureRedirect: '/' }),
+	function(req, res) {
+		res.redirect('/');
+	});
 
 // static
 

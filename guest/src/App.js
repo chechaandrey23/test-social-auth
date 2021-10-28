@@ -26,6 +26,9 @@ function App() {
 					<div className="col-sm-auto">
 						<a className="btn btn-outline-primary btn-lg" href="/auth/google">google</a>
 					</div>
+					<div className="col-sm-auto">
+						<a className="btn btn-outline-primary btn-lg" href="/auth/github">google</a>
+					</div>
 				</div>
 			</div>
 			<div className="p-1 row justify-content-center">
