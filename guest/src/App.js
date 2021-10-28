@@ -27,7 +27,7 @@ function App() {
 						<a className="btn btn-outline-primary btn-lg" href="/auth/google">google</a>
 					</div>
 					<div className="col-sm-auto">
-						<a className="btn btn-outline-primary btn-lg" href="/auth/github">google</a>
+						<a className="btn btn-outline-primary btn-lg" href="/auth/github">github</a>
 					</div>
 				</div>
 			</div>
