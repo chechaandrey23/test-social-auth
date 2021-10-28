@@ -42,7 +42,8 @@ passport.deserializeUser(function(user, done) {
 passport.use(new FacebookStrategy({
 		clientID: '415983733528264',
 		clientSecret: '09ebbd8117b6c476ecda0a88f6a8515b',
-		callbackURL: "http://localhost:3003/auth/facebook/callback"
+		//callbackURL: "http://localhost:3003/auth/facebook/callback"
+		callbackURL: "https://blooming-wave-53194.herokuapp.com/auth/facebook/callback"
 	}, function(accessToken, refreshToken, profile, cb) {
 		// add refresh token
 		console.log(accessToken, refreshToken, profile);
