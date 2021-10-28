@@ -59,7 +59,8 @@ passport.use(new FacebookStrategy({
 passport.use(new GoogleStrategy({
 		clientID: '341813737788-6b4k473h2nf4tkd2e32kk33ti2ojv4hu.apps.googleusercontent.com',
 		clientSecret: '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',
-		callbackURL: "http://localhost:3003/auth/google/callback"
+		//callbackURL: "http://localhost:3003/auth/google/callback"
+		callbackURL: "https://blooming-wave-53194.herokuapp.com/auth/google/callback"
 	},
 	function(accessToken, refreshToken, profile, done) {
 		// add refresh token
