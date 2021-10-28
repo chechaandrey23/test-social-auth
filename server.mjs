@@ -9,7 +9,7 @@ import cookieParser from 'cookie-parser';
 import crypto from 'crypto';
 
 const app = express();
-const port = 3003;
+const port = process.env.PORT || 3003;
 
 app.use(cookieParser());
 
@@ -177,17 +177,21 @@ app.get('/public-api/main', (req, res) => {
 });
 
 // get react
-app.get('/user*', middlewareIsAuthRedirect, (req, res) => {
-	res.status(200).sendFile(path.resolve("../user/build/index.html"));
+
+
+app.get('/user', middlewareIsAuthRedirect, (req, res) => {
+	res.status(200).sendFile(path.resolve("user/build/index.html"));
 });
+
+
 
 app.get('/', middlewareYesAuthRedirect, (req, res) => {
-	res.status(200).sendFile(path.resolve("../guest/build/index.html"));
+	res.status(200).sendFile(path.resolve("guest/build/index.html"));
 });
 
-app.use('/', express.static(path.resolve() + "/../user/build"));
+app.use('/', express.static(path.resolve() + "/user/build"));
 
-app.use('/', express.static(path.resolve() + "/../guest/build"));
+app.use('/', express.static(path.resolve() + "/guest/build"));
 
 // connect port
 app.listen(port, () => {
