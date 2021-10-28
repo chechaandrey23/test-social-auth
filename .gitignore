@@ -1,0 +1,6 @@
+node_modules
+user/node_modules
+guest/node_modules
+npm-debug.log
+user/npm-debug.log
+guest/npm-debug.log
